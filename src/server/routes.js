@@ -1,6 +1,7 @@
 const express = require('express');
 const routes = express.Router();
 const validateUser = require('./validator/validateUser');
+const validateLogin = require('./validator/validateLogin');
 
 let User = require('./user.model');
 
@@ -38,8 +39,15 @@ routes.route('/add').post((req, res)=>{
                             req.status(400).send('user failed to add');
                         });
                 }
-            })
+            })   
+});
 
+routes.route('/login').post((req,res)=>{
+    const{errors, isValid} = validateLogin(req.body);
+
+    if(!isValid){
+        return res.status(400).json(errors)
+    }
     
 });
 
