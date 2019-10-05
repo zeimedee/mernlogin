@@ -3,6 +3,7 @@ const app = express();
 const cors = require('cors');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const passport = require('passport');
 const PORT = 4000;
 const routes = require('./routes');
 
@@ -16,6 +17,12 @@ const connection = mongoose.connection;
 connection.once('open', () => {
     console.log('db connected established');
 });
+
+//passport middleware
+app.use(passport.initialize());
+
+//passport config
+require('./validator/passport')(passport);
 
 
 
