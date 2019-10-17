@@ -23,7 +23,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "start:server": "nodemon src/server/server.js"
+    "start:server": "nodemon src/server/server.js",
+    "Utest":"mocha src/server/test/test.js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -39,5 +40,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "mocha": "^6.2.1",
+    "should": "^13.2.3",
+    "supertest": "^4.0.2"
   }
 }
