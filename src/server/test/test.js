@@ -13,52 +13,58 @@ let user = {
 var server = supertest.agent("http://localhost:4000/register");
 
 
-describe("Unit Test 1", ()=>{
+describe("Test Suite 1", ()=>{
 
-    // it("should return home",(done)=>{
-    //     server.get('/')
-    //           .expect("content-type",/json/)
-    //           .expect(200)
-    //           .end((err,res)=>{
-    //             res.status.should.equal(200);
-    //             //res.body.error.should.equal(false);
-    //           done();
-    //       });
-    // });
-
-    // it("Should register user", (done)=>{
-    //     server.post('/add')
-    //           .send({name:"user1", email:"news9test@test.com", password:"newtests"})
-    //           .expect("content-type",/json/)
-    //           .expect(200)
-    //           .end((err,res)=>{
-    //                 res.status.should.equal(200);
-    //                 done();
-    //           });
-    // });
-
-    // it("should login user", (done)=>{
-    //     server.post('/login')
-    //           .send({name:"user1", email:"newstest@test.com", password:"newtests"})
-    //           .expect("content-type",/json/)
-    //           .expect(200)
-    //           .end((err,res)=>{
-    //               res.status.should.equal(200);
-    //               done();
-    //           })
-    // });
-
-    it(" user should return true", ()=>{
-        let result = validateUser(user);
-        expect(result.isValid).to.be.true;
-
+    describe("Integration Tests", ()=>{
+        it("should return home",(done)=>{
+            server.get('/')
+                  .expect("content-type",/json/)
+                  .expect(200)
+                  .end((err,res)=>{
+                    res.status.should.equal(200);
+                    //res.body.error.should.equal(false);
+                  done();
+              });
+        });
+    
+        it("Should register user", (done)=>{
+            server.post('/add')
+                  .send({name:"user1", email:"news10test@test.com", password:"newtests"})
+                  .expect("content-type",/json/)
+                  .expect(200)
+                  .end((err,res)=>{
+                        res.status.should.equal(200);
+                        done();
+                  });
+        });
+    
+        it("should login user", (done)=>{
+            server.post('/login')
+                  .send({name:"user1", email:"newstest@test.com", password:"newtests"})
+                  .expect("content-type",/json/)
+                  .expect(200)
+                  .end((err,res)=>{
+                      res.status.should.equal(200);
+                      done();
+                  })
+        });
     });
 
     
-    it("login should return true", ()=>{
-        let result = validateLogin(user);
-        expect(result.isValid).to.be.true;
-    });
+        describe("Unit Tests", ()=>{
+            it(" user should return true", ()=>{
+                let result = validateUser(user);
+                expect(result.isValid).to.be.true;
+        
+            });
+        
+        
+            it("login should return true", ()=>{
+                let result = validateLogin(user);
+                expect(result.isValid).to.be.true;
+            });
+            
+        });
     
 
 });
