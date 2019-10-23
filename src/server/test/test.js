@@ -2,7 +2,13 @@ var supertest = require('supertest')
 const{ assert , expect} = require('chai');
 var should = require("should");
 const validateUser = require("../validator/validateUser");
+const validateLogin = require('../validator/validateLogin');
 
+let user = {
+    name: "alex",
+    email:"ziemedee@gmail.com",
+    password:"alexnnnjsd"
+}
 
 var server = supertest.agent("http://localhost:4000/register");
 
@@ -42,16 +48,16 @@ describe("Unit Test 1", ()=>{
     //           })
     // });
 
-    it("should return true", ()=>{
-        
-        let user = {
-            name: "alex",
-            email:"ziemedee@gmail.com",
-            password:"alexdder"
-        }
+    it(" user should return true", ()=>{
         let result = validateUser(user);
         expect(result.isValid).to.be.true;
 
+    });
+
+    
+    it("login should return true", ()=>{
+        let result = validateLogin(user);
+        expect(result.isValid).to.be.true;
     });
     
 
