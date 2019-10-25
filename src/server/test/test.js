@@ -13,7 +13,7 @@ let user = {
 var server = supertest.agent("http://localhost:4000/register");
 
 
-describe("Test Suite 1", ()=>{
+describe("Test Suite", ()=>{
 
     describe("Integration Tests", ()=>{
         it("should return home",(done)=>{
@@ -29,7 +29,7 @@ describe("Test Suite 1", ()=>{
     
         it("Should register user", (done)=>{
             server.post('/add')
-                  .send({name:"user1", email:"news10test@test.com", password:"newtests"})
+                  .send(user)
                   .expect("content-type",/json/)
                   .expect(200)
                   .end((err,res)=>{
@@ -40,7 +40,7 @@ describe("Test Suite 1", ()=>{
     
         it("should login user", (done)=>{
             server.post('/login')
-                  .send({name:"user1", email:"newstest@test.com", password:"newtests"})
+                  .send(user)
                   .expect("content-type",/json/)
                   .expect(200)
                   .end((err,res)=>{
