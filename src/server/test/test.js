@@ -1,5 +1,5 @@
 var supertest = require('supertest')
-const{ assert , expect} = require('chai');
+const{expect} = require('chai');
 var should = require("should");
 const validateUser = require("../validator/validateUser");
 const validateLogin = require('../validator/validateLogin');
@@ -57,7 +57,6 @@ describe("Test Suite", ()=>{
                 expect(result.isValid).to.be.true;
         
             });
-        
         
             it("login should return true", ()=>{
                 let result = validateLogin(user);
